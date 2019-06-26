@@ -1,0 +1,21 @@
+{:deps    {org.clojure/clojure    {:mvn/version "1.10.0"}
+           org.clojure/core.async {:mvn/version "0.4.490"}
+           bidi                   {:mvn/version "2.1.6"}}
+ :paths   ["src"]
+ :aliases {:server {:extra-paths ["resources"]
+                    :extra-deps  {http-kit                   {:mvn/version "2.3.0"}
+                                  ring/ring                  {:mvn/version "1.7.1"}
+                                  ring/ring-json             {:mvn/version "0.4.0"}
+                                  com.stuartsierra/component {:mvn/version "0.4.0"}
+                                  hiccup                     {:mvn/version "1.0.5"}}}
+           :client {:extra-deps {cider/cider-nrepl    {:mvn/version "0.21.0"}
+                                 reagent              {:mvn/version "0.8.1"}
+                                 re-frame/re-frame    {:mvn/version "0.10.6"}
+                                 cljs-http/cljs-http  {:mvn/version "0.1.46"}
+                                 venantius/accountant {:mvn/version "0.2.4"}}}
+           :dev    {:extra-paths ["dev" "test"]}
+           :test   {:extra-paths ["test"]
+                    :extra-deps  {com.cognitect/test-runner
+                                  {:git/url "https://github.com/cognitect-labs/test-runner.git"
+                                   :sha     "209b64504cb3bd3b99ecfec7937b358a879f55c1"}}}}}
+

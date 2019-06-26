@@ -1,0 +1,11 @@
+{:deps   {:aliases [:client]}
+ :builds {:app  {:output-dir "resources/public/"
+                 :asset-path "."
+                 :target     :browser
+                 :modules    {:main {:init-fn client.main/main!}}
+                 :devtools   {:after-load client.main/reload!}}
+          :test {:target   :browser-test
+                 :test-dir "resources/public/js/test"
+                 :devtools {:http-port 8021
+                            :http-root "resources/public/js/test"}}}
+ :nrepl  {:port 9000}}
