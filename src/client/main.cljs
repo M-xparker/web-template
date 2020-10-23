@@ -8,7 +8,8 @@
 
 (defn ui
   []
-  (let [location @(rf/subscribe [:page])] 
+  (let [location @(rf/subscribe [:page])]
+    (println location)
     [:div 
      (if (:handler location)
        (route/page location))]))

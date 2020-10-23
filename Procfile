@@ -1,0 +1,1 @@
+web: java -cp pomodoro.jar clojure.main -m server.core

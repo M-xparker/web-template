@@ -17,4 +17,3 @@
    (go (let [response (<! (http/get path
                                     {:with-credentials? false}))] 
          (callback response)))))
-

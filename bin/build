@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+shadow-cljs release app
+clojure -A:depstar:server -m hf.depstar.uberjar pomodoro.jar

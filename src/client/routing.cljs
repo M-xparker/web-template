@@ -2,10 +2,11 @@
   (:require [accountant.core :as accountant]
             [bidi.bidi :as bidi]
             [bidi.router :refer [start-router!]]
-            [re-frame.core :as rf]))
+            [re-frame.core :as rf]
+            [goog.string :as gstr]))
 
 (def app-routes
-  ["/" {"" :index}])
+  ["/app" {"" :index}])
 
 (defn start!
   []
@@ -24,8 +25,22 @@
   [component]
   (bidi/path-for app-routes component))
 
+(defn clock
+  [now]
+  (let [now  @now
+        mins (js/Math.floor (/ now 60))
+        secs (js/Math.round  (- now (* mins 60)))]
+    [:div (gstr/format "%02d:%02d" mins secs)]))
+
 (defmulti page :handler)
 
 (defmethod page :index
   [params]
-  [:div "Hello world!"])
+  (let [now (rf/subscribe [:clock])]
+    [:div 
+     [:button {:on-click #(rf/dispatch [:start "work"])}
+      "Start work"]
+     [:br]
+     [:button {:on-click #(rf/dispatch [:start "break"])}
+      "Start break"]
+     [clock now]]))
